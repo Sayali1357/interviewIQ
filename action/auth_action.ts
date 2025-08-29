@@ -11,7 +11,7 @@ const ONE_WEEK = 60 * 60 * 24 * 7 ;//7 days
 export async function signUp(params: SignUpParams) {
     const { uid, name, email } = params;
     try {
-        const userDocRef = db.collection("user").doc(uid);
+        const userDocRef = db.collection("users").doc(uid);
         const userRecord = await userDocRef.get();
 
         if (userRecord.exists) {
@@ -57,7 +57,12 @@ export async function signUp(params: SignUpParams) {
                 }
             }
             await setSessionCookie(idToken);
-
+            
+            return {
+                success: true,
+                message: 'Logged in successfully!'
+            };
+            
         }catch(e){
             console.error(e);
             return{
@@ -76,7 +81,7 @@ export async function signUp(params: SignUpParams) {
         cookieStore.set('session', SessionCookie, {
             maxAge: ONE_WEEK,
             httpOnly: true,
-            secure: process.env.Node_ENV === 'prodduction',
+            secure: process.env.NODE_ENV === 'production',
             path: '/',
             sameSite: 'lax'
         })
@@ -106,7 +111,7 @@ export async function signUp(params: SignUpParams) {
                 id: userRecord.id,
 
             }as User
-        }catch{
+        }catch (e){
             console.log(e)
             return null;
         }
