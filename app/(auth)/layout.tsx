@@ -2,6 +2,7 @@ import { isAuthenticated } from '@/action/auth_action'
 import { redirect } from 'next/navigation';
 import {ReactNode} from 'react'
 
+
 const AuthLayout =async({children}: {children: ReactNode}) => {
   const isUserAuthenticated = await isAuthenticated();
 
@@ -12,3 +13,4 @@ const AuthLayout =async({children}: {children: ReactNode}) => {
 }
 
 export default AuthLayout
+

@@ -332,3 +332,6 @@
     transform: translateY(0);
   }
 }
+@utility transparent-bg {
+  @apply bg-transparent from-transparent to-transparent;
+}

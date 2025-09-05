@@ -3,15 +3,15 @@ import { Mona_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 
+
 const monaSans = Mona_Sans({
   variable: "--font-mona-sans",
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   title: "InterviewIQ",
-  description: "An AI-poowerwd platform for preparing for mock interviews.",
+  description: "An AI-powered platform for preparing for mock interviews.",
 };
 
 export default function RootLayout({
@@ -21,10 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${monaSans.className} antialiased pattern`} >
-          {children}
-          <Toaster/>
+      <body className={`${monaSans.className} antialiased pattern relative`}>
+        {children}
+        <Toaster />
       </body>
     </html>
   );
