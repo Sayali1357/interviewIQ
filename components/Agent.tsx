@@ -11,7 +11,11 @@ enum CallStatus {
 
 interface AgentProps {
   userName: string;
-}
+  userId: string;  // or number
+  type: string;
+};
+
+
 
 const Agent = ({ userName }: AgentProps) => {
   const callStatus = CallStatus.FINISHED;

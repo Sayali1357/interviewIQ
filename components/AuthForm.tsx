@@ -57,7 +57,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           return;
         }
         toast.success("Account created successfully. Please sign in.");
-        window.location.href = '/sign-in';
+        router.push('/sign-in'); // Redirect to homepage
 
       } else {
         const { email, password } = values;
@@ -72,7 +72,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           email, idToken
         });
         toast.success("Signed in successfully.");
-        window.location.href = '/';
+         router.push('/'); // Redirect to homepage
       }
     } catch (error) {
       if (error instanceof Error) {
